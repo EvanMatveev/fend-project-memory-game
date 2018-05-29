@@ -2,7 +2,35 @@
  * Create a list that holds all of your cards
  */
 // Creates the html list of all the cards
-let cards = [...document.getElementsByClassName("card")];
+
+let allCards = [
+  "fa-dollar-sign",
+  "fa-dollar-sign",
+  "fa-ruble-sign",
+  "fa-ruble-sign",
+  "fa-euro-sign",
+  "fa-euro-sign",
+  "fa-pound-sign",
+  "fa-pound-sign",
+  "fa-yen-sign",
+  "fa-yen-sign",
+  "fa-won-sign",
+  "fa-won-sign",
+  "fa-rupee-sign",
+  "fa-rupee-sign",
+  "fa-lira-sign",
+  "fa-lira-sign"
+];
+
+let generateCard = card => `<li class="card"><i class="fa ${card}"></i></li>`;
+
+let initGame = () => {
+  let deck = document.querySelector(".deck");
+  let genCard = shuffle(allCards).map(card => generateCard(card));
+  deck.innerHTML = genCard.join("");
+};
+
+initGame();
 
 /*
  * Display the cards on the page
@@ -39,6 +67,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+let cards = document.querySelectorAll(".card");
 let openCards = [];
 
 cards.forEach(card => {
@@ -50,7 +79,7 @@ cards.forEach(card => {
     ) {
       openCards.push(card);
       card.classList.add("open", "show");
-      if (openCards.length > 1) {
+      if (openCards.length == 2) {
         setTimeout(() => {
           openCards.forEach(item => {
             item.classList.remove("open", "show");
