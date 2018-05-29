@@ -22,7 +22,8 @@ let allCards = [
   "fa-lira-sign"
 ];
 
-let generateCard = card => `<li class="card"><i class="fa ${card}"></i></li>`;
+let generateCard = card =>
+  `<li class="card" data-card=${card}><i class="fa ${card}"></i></li>`;
 
 let initGame = () => {
   let deck = document.querySelector(".deck");
@@ -80,6 +81,19 @@ cards.forEach(card => {
       openCards.push(card);
       card.classList.add("open", "show");
       if (openCards.length == 2) {
+        // Keep the matched cards opened and disabled
+        if (openCards[0].dataset.card == openCards[1].dataset.card) {
+          openCards[0].classList.add("match");
+          openCards[0].classList.remove("open");
+          openCards[0].classList.remove("show");
+
+          openCards[1].classList.add("match");
+          openCards[1].classList.remove("open");
+          openCards[1].classList.remove("show");
+
+          openCards = [];
+        }
+        // Hide the cards if cards are not match
         setTimeout(() => {
           openCards.forEach(item => {
             item.classList.remove("open", "show");
