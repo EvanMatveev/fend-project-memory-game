@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 // Creates the html list of all the cards
-let cards = document.getElementsByClassName("card");
+let cards = [...document.getElementsByClassName("card")];
 
 /*
  * Display the cards on the page
@@ -38,3 +38,26 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+let openCards = [];
+
+cards.forEach(card => {
+  card.addEventListener("click", event => {
+    if (
+      !card.classList.contains("open") &&
+      !card.classList.contains("show") &&
+      !card.classList.contains("match")
+    ) {
+      openCards.push(card);
+      card.classList.add("open", "show");
+      if (openCards.length > 1) {
+        setTimeout(() => {
+          openCards.forEach(item => {
+            item.classList.remove("open", "show");
+          });
+          openCards = [];
+        }, 1000);
+      }
+    }
+  });
+});

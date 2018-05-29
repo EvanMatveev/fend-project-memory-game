@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Gameplay](#contributing)
 
 ## Instructions
 
@@ -13,8 +13,6 @@ To get started, open `js/app.js` and start building out the app's functionality
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
+## Gameplay
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Your task is to find all 8 matches from 16 cards. There are 8 pairs of different currencies that many people around the world use. When the cards are matches - they stay opened on the board. You will get your own score based on how many attempts you make before finishing the game. You will also get the timer
