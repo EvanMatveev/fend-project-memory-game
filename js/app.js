@@ -22,12 +22,12 @@ let allCards = [
   "fa-lira-sign"
 ];
 
-let generateCard = card =>
-  `<li class="card" data-card=${card}><i class="fa ${card}"></i></li>`;
+let generateCard = cart =>
+  `<li class="card" data-card=${cart}><i class="fas ${cart}"></i></li>`;
 
 let initGame = () => {
   let deck = document.querySelector(".deck");
-  let genCard = shuffle(allCards).map(card => generateCard(card));
+  let genCard = shuffle(allCards).map(item => generateCard(item));
   deck.innerHTML = genCard.join("");
 };
 
@@ -70,6 +70,8 @@ function shuffle(array) {
 
 let cards = document.querySelectorAll(".card");
 let openCards = [];
+let moves = 0;
+let moveCounter = document.querySelector(".moves");
 
 cards.forEach(card => {
   card.addEventListener("click", event => {
@@ -102,5 +104,7 @@ cards.forEach(card => {
         }, 1000);
       }
     }
+    moves++;
+    moveCounter.innerText = moves;
   });
 });
